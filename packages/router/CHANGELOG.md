@@ -1,3 +1,28 @@
+# [5.3.0](https://github.com/vuejs/router/compare/v5.2.0...v5.3.0) (2026-08-27)
+
+### Bug Fixes
+
+- **history:** remove visibilitychange listener to prevent focus steal in Edge ([#2704](https://github.com/vuejs/router/issues/2704)) ([17b5861](https://github.com/vuejs/router/commit/17b586117489b304f75054015a0bd62d9d9a1fce))
+- **router:** skip scroll saving for unknown pop direction (fix [#1431](https://github.com/vuejs/router/issues/1431)) ([#2780](https://github.com/vuejs/router/issues/2780)) ([2315047](https://github.com/vuejs/router/commit/231504721166d842e693f0a82e298ea2cc197dc0))
+- **types:** allow unsetting a route name with `false` in `EditableTreeNode` ([#2752](https://github.com/vuejs/router/issues/2752)) ([8e2e145](https://github.com/vuejs/router/commit/8e2e1459376e17bbc9813a1c4fdc1c14ac0f9bb9))
+- **unplugin:** generate param types from override paths and stop inheritance on absolute overrides ([#2646](https://github.com/vuejs/router/issues/2646)) ([67babd4](https://github.com/vuejs/router/commit/67babd4840ea6ec5d0e90fd3d884042161919fdb))
+- **unplugin:** report unnamed params once per route ([5205881](https://github.com/vuejs/router/commit/5205881adafbdf5abbe06d06b5bb10ebc7d9ada8))
+- **unplugin:** skip unnamed params in generated route types ([c694ec4](https://github.com/vuejs/router/commit/c694ec446f690c80744fd162f1670be806a36ce5))
+- **unplugin:** sort and dedupe params in generated types ([a25fa87](https://github.com/vuejs/router/commit/a25fa87c3e3311cfa49c14cbdec3b83b0a92782b))
+
+### Features
+
+- prevent race condition dev-only error ([#2789](https://github.com/vuejs/router/issues/2789)) ([d2b87d5](https://github.com/vuejs/router/commit/d2b87d59d6275f5ac71b4aeb5224e4adf3349347))
+- **scroll:** skip scroll computation based on history.scrollRestoration ([033f1c7](https://github.com/vuejs/router/commit/033f1c7d9dae3e58e26a8fe24f20ff832407b914)), closes [#2393](https://github.com/vuejs/router/issues/2393)
+- **unplugin:** don't crash on duplicate definePage() calls ([#2753](https://github.com/vuejs/router/issues/2753)) ([686bf9e](https://github.com/vuejs/router/commit/686bf9e7e84b083dec151ca09bbe77bcef3034f4))
+- **volar:** narrow `typeof useRoute` in a type context ([#2759](https://github.com/vuejs/router/issues/2759)) ([7a4c8ea](https://github.com/vuejs/router/commit/7a4c8ea83517aa66c09c98494aaac59b5e2e5da1))
+
+### Performance Improvements
+
+- avoid depending on the current route to resolve absolute locations ([9b7e3ee](https://github.com/vuejs/router/commit/9b7e3ee4e138019fbfc74f67a04c6ffaa8b23f8c))
+- **experimental:** avoid tracking currentRoute in absolute string locations ([084fcfc](https://github.com/vuejs/router/commit/084fcfcb4e1ec1f54bd38527b08c36fba7321809))
+- replace `json5` and `yaml` with `confbox` ([#2769](https://github.com/vuejs/router/issues/2769)) ([aab2876](https://github.com/vuejs/router/commit/aab2876e2703318024e02e03d15713191f2f95db))
+
 # [5.2.0](https://github.com/vuejs/router/compare/v5.1.0...v5.2.0) (2026-07-15)
 
 ### Bug Fixes
