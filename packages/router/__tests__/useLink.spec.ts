@@ -9,6 +9,13 @@ import type { UseLinkOptions } from '../src/RouterLink'
 import { useLink } from '../src/RouterLink'
 import { createMemoryHistory } from '../src/history/memory'
 import { createRouter } from '../src/router'
+import {
+  experimental_createRouter,
+  normalizeRouteRecord,
+} from '../src/experimental/router'
+import { createFixedResolver } from '../src/experimental/route-resolver/resolver-fixed'
+import { MatcherPatternPathDynamic } from '../src/experimental/route-resolver/matchers/matcher-pattern'
+import { PARAM_PARSER_INT } from '../src/experimental/route-resolver/matchers/param-parsers'
 import { describe, expect, it } from 'vitest'
 
 async function callUseLink(args: UseLinkOptions) {
@@ -127,6 +134,38 @@ describe('useLink', () => {
       await router.push('/b')
       expect(link.isActive.value).toBe(false)
       expect(link.isExactActive.value).toBe(false)
+    })
+
+    it('keeps parsed integer links active when they are exact active', async () => {
+      const userRoute = normalizeRouteRecord({
+        name: 'user',
+        path: new MatcherPatternPathDynamic(
+          /^\/users\/([^/]+?)$/i,
+          { id: [PARAM_PARSER_INT] },
+          ['users', 1]
+        ),
+        components: { default: {} },
+      })
+      const router = experimental_createRouter({
+        history: createMemoryHistory(),
+        resolver: createFixedResolver([userRoute]),
+      })
+      await router.push('/users/1')
+
+      let link!: ReturnType<typeof useLink>
+      mount(
+        {
+          setup() {
+            link = useLink({ to: { name: 'user', params: { id: 1 } } })
+            return () => ''
+          },
+        },
+        { global: { plugins: [router] } }
+      )
+
+      expect(link.route.value.params).toEqual({ id: 1 })
+      expect(link.isActive.value).toBe(true)
+      expect(link.isExactActive.value).toBe(true)
     })
   })
 

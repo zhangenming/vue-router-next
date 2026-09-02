@@ -412,9 +412,7 @@ function includesParams(
   for (const key in inner) {
     const innerValue = inner[key]
     const outerValue = outer[key]
-    if (typeof innerValue === 'string') {
-      if (innerValue !== outerValue) return false
-    } else {
+    if (isArray(innerValue)) {
       if (
         !isArray(outerValue) ||
         outerValue.length !== innerValue.length ||
@@ -423,6 +421,8 @@ function includesParams(
         )
       )
         return false
+    } else if (innerValue !== outerValue) {
+      return false
     }
   }
 
