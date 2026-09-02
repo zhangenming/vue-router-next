@@ -150,7 +150,7 @@ It is possible to define [named views](https://router.vuejs.org/guide/essentials
 ```js
 {
   path: '/',
-  component: {
+  components: {
     aux: () => import('src/pages/index@aux.vue')
   }
 }

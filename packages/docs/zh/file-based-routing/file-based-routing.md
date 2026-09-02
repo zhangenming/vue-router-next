@@ -150,7 +150,7 @@ src/pages/
 ```js
 {
   path: '/',
-  component: {
+  components: {
     aux: () => import('src/pages/index@aux.vue')
   }
 }
