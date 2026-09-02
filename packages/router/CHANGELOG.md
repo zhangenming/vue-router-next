@@ -1,3 +1,9 @@
+## [5.3.1](https://github.com/vuejs/router/compare/v5.3.0...v5.3.1) (2026-09-02)
+
+### Bug Fixes
+
+- **experimental:** handle non-string params for isActive ([92cfd6f](https://github.com/vuejs/router/commit/92cfd6f4f3dd529376704eb3b8575309d2418317))
+
 # [5.3.0](https://github.com/vuejs/router/compare/v5.2.0...v5.3.0) (2026-08-27)
 
 ### Bug Fixes
